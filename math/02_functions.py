@@ -1,5 +1,6 @@
+import matplotlib.pyplot as plt
+
 import numpy as np
-import matplotlib as plt
 
 
 def relu(x):
@@ -19,6 +20,40 @@ def softmax(z):
     
     return probs
 
+def relu_plot(x):
+    f = (2*x) + 1
+    chain_relu = (3*relu(f)) - 1
+
+    plain_chain = (3*f) - 1
+
+    plt.figure()
+    plt.plot(x, plain_chain, label="plain chain")
+    plt.plot(x, chain_relu, label="with relu")
+    plt.legend()
+    plt.title("with and without relu")
+    plt.xlabel("x")
+    plt.ylabel("output")
+
+
+def sigmoid_plot(z):
+    j = sigmoid(z)
+    
+    plt.figure()
+    plt.scatter(0,0.5, color="red", label="center")
+    plt.plot(z, j, label="sigmoid")
+    plt.text(6, 0.90, "saturated")
+    plt.text(-7, 0.10, "saturated")
+    plt.legend()
+    plt.title("sigmoid")
+    plt.xlabel("z")
+    plt.ylabel("output")
+    
+def sigmoid_symmetry(z):
+    left = 1 - (sigmoid(-z))
+    right = sigmoid(z)
+    
+    assert np.allclose(left, right), "mali mo boi"
+
 
 if __name__ == "__main__":
     assert np.allclose(relu(np.array([-1, 0.5, 2, -3])), [0, 0.5, 2, 0])
@@ -29,6 +64,10 @@ if __name__ == "__main__":
     assert np.allclose(softmax(np.array([1000.0, 999])), [0.731, 0.269], atol=1e-3)
     assert np.isclose(softmax(np.array([5.0, -2.0, 0.3])).sum(), 1.0)
     
-    # softmax([2.0, 1.0, 0.1])
+    
+    sigmoid_symmetry(z = np.random.uniform(-8, 8, 5))
     print("all checks passed")
+    relu_plot(x = np.linspace(-5, 5, 200))
+    sigmoid_plot(z = np.linspace(-8, 8, 200))
+    plt.show()
     
