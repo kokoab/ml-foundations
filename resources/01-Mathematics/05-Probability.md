@@ -60,6 +60,10 @@ One useful way to read it: **if you repeated the situation many, many times, the
 
 (Probabilities are often written as percentages too: $0.7 = 70\%$.)
 
+![A simulated run fluctuates strongly at first and stabilizes as more flips accumulate. Stabilizing does not mean approaching the probability in a perfectly smooth sequence.](assets/visuals/05-frequency.png)
+
+*A simulated run fluctuates strongly at first and stabilizes as more flips accumulate. Stabilizing does not mean approaching the probability in a perfectly smooth sequence.*
+
 ### The vocabulary
 
 | Word | Meaning | Die example |
@@ -165,6 +169,10 @@ Counting all the "at least one six" cases directly is messy. Instead:
 
 "**$A$ or $B$**" means $A$ happens, or $B$ happens, or both. It's written $A \cup B$ (read "**A union B**"). The symbol $\cup$ looks like a U. Think of it as **everything in either group**.
 
+![Shading marks the included outcomes. And keeps the overlap; or includes either circle, including the overlap; not A includes everything in the rectangular outcome space outside A. Areas are schematic, not numerical probabilities.](assets/visuals/05-events.png)
+
+*Shading marks the included outcomes. And keeps the overlap; or includes either circle, including the overlap; not A includes everything in the rectangular outcome space outside A. Areas are schematic, not numerical probabilities.*
+
 ### The addition rule
 
 $$
@@ -225,6 +233,10 @@ If one choice has $a$ options and a second, separate choice has $b$ options, the
 **Example.** 3 shirts and 2 pairs of pants give $3 \times 2 = 6$ outfits.
 
 That's why two dice have $6 \times 6 = 36$ outcomes.
+
+![Each shirt choice branches into three trouser choices. Count complete paths through the tree to count the possible outfits.](assets/visuals/05-counting.png)
+
+*Each shirt choice branches into three trouser choices. Count complete paths through the tree to count the possible outfits.*
 
 ### Factorial: arranging things in order
 
@@ -309,6 +321,10 @@ Once you **learn something**, probabilities change. The chance a random person i
 Only look at the **second-year row**: 30 of those 40 drink coffee. So the answer is $\frac{30}{40} = 0.75$.
 
 You **shrank the universe** from 100 students down to the 40 second-years, then counted inside it.
+
+![The worked example conditions on second-year students: the first-year bars leave the group being counted. Coffee drinkers are then 30 of the remaining 40, rather than 30 of all 100.](assets/visuals/05-conditional.png)
+
+*The worked example conditions on second-year students: the first-year bars leave the group being counted. Coffee drinkers are then 30 of the remaining 40, rather than 30 of all 100.*
 
 ### Notation
 
@@ -410,6 +426,10 @@ A \text{ and } B \text{ are independent} \quad⟺\quad P(A \cap B) = P(A) \cdot 
 $$
 
 **For independent events, "and" means multiply.** That's why we could multiply $\frac{5}{6} \times \frac{5}{6}$ in §2: the two dice don't affect each other.
+
+![For an independent fair coin and fair die, knowing heads happened removes the tails row but does not favor any die face.](assets/visuals/05-independence.png)
+
+*For an independent fair coin and fair die, knowing heads happened removes the tails row but does not favor any die face.*
 
 ### Checking independence with numbers
 
@@ -536,6 +556,10 @@ $$
 | $P(\text{positive})$ | $0.009 + 0.0495 = 0.0585$ |
 | $P(\text{sick} \mid \text{positive})$ | $\frac{0.009}{0.0585} \approx 0.154$ |
 
+![The worked example's rare disease creates a very large healthy group. Among 585 positives, 495 are false alarms and 90 are true positives. Notice that the two panels use different vertical scales.](assets/visuals/05-bayes.png)
+
+*The worked example's rare disease creates a very large healthy group. Among 585 positives, 495 are false alarms and 90 are true positives. Notice that the two panels use different vertical scales.*
+
 ### Why the answer is so low: the base rate
 
 The disease is **rare** (1%). Even a small false-alarm rate, applied to the huge healthy group, produces far more false alarms (495) than real cases (90).
@@ -633,6 +657,10 @@ $$
 
 Read aloud as "**the integral** from a to b of f of x, d x." You won't calculate these by hand in this curriculum. Just read $\int$ as "**the continuous version of $\Sigma$**": adding up infinitely many infinitely thin slices. (The symbol is a stretched-out S, for Sum.)
 
+![Left: bar heights are probabilities and sum to 1. Right: the orange area over a range is a probability; the curve's height alone is density, not probability. The right-hand curve is a separate standard-normal demonstration.](assets/visuals/05-distributions.png)
+
+*Left: bar heights are probabilities and sum to 1. Right: the orange area over a range is a probability; the curve's height alone is density, not probability. The right-hand curve is a separate standard-normal demonstration.*
+
 ### Density is not probability
 
 The **height** of a PDF isn't a probability. It's **probability per unit of width**, which means it **can be bigger than 1**.
@@ -640,6 +668,10 @@ The **height** of a PDF isn't a probability. It's **probability per unit of widt
 **Example.** A number chosen uniformly between 0 and 0.25 has a flat PDF. The area must be 1 and the width is 0.25, so the height is $\frac{1}{0.25} = 4$. That's perfectly fine.
 
 > **Why ML cares:** Model predictions are distributions. A classifier gives a PMF over categories. Some models predict a continuous value along with its uncertainty, using a density.
+
+![The density may exceed 1 because probability is area. This worked example has height 4 over width 0.25, so the whole area is 1; the highlighted smaller interval has probability 0.40.](assets/visuals/05-density.png)
+
+*The density may exceed 1 because probability is area. This worked example has height 4 over width 0.25, so the whole area is 1; the highlighted smaller interval has probability 0.40.*
 
 ### Exercises
 
@@ -696,6 +728,10 @@ $$
 - For continuous variables, the same idea uses $\int$ instead of $\sum$.
 
 It's the **long-run average**, and it doesn't have to be a value $X$ can actually take. You can't roll a 3.5.
+
+![Separate demonstration: probabilities [0.1, 0.2, 0.4, 0.3] weight outcomes [1, 2, 3, 4]. Their weighted average is 2.9, even though 2.9 is not an individual possible outcome.](assets/visuals/05-expectation.png)
+
+*Separate demonstration: probabilities [0.1, 0.2, 0.4, 0.3] weight outcomes [1, 2, 3, 4]. Their weighted average is 2.9, even though 2.9 is not an individual possible outcome.*
 
 ### Worked example: the game
 
@@ -774,6 +810,10 @@ Two games, each costing nothing:
 - **Game B:** flip a coin. Heads you win ₱10, tails you win ₱0.
 
 Both have expected value ₱5. But they feel completely different: A is **guaranteed**, B is **risky**. We need a number for "how spread out" the results are.
+
+![Both games in the explanation have the same expected value. Their outcomes are distributed differently: one never varies, while the other puts all its probability far from the mean.](assets/visuals/05-variance.png)
+
+*Both games in the explanation have the same expected value. Their outcomes are distributed differently: one never varies, while the other puts all its probability far from the mean.*
 
 ### Building the definition
 
@@ -973,6 +1013,10 @@ It's written $\mathcal{N}(\mu, \sigma^2)$, read "**normal with mean mu and varia
 |---|---|---|---|---|
 | $f(x)$ | 0.399 | 0.242 | 0.054 | 0.004 |
 
+![Separate examples compare one yes/no trial (success probability 0.3), the count of successes in eight such independent trials, and a standard Gaussian density. Probability bars and density curves have different vertical meanings.](assets/visuals/05-families.png)
+
+*Separate examples compare one yes/no trial (success probability 0.3), the count of successes in eight such independent trials, and a standard Gaussian density. Probability bars and density curves have different vertical meanings.*
+
 ### The 68–95–99.7 rule
 
 For **any** Gaussian:
@@ -982,6 +1026,10 @@ For **any** Gaussian:
 - about **99.7%** within $3\sigma$
 
 **Example.** Heights are $\mathcal{N}(165, 7^2)$ cm. About 95% of people are between $165 - 14 = 151$ and $165 + 14 = 179$ cm.
+
+![The ranges are centered on the mean and nested inside one another. Each percentage is the full area within that range, not the area of only its outer band.](assets/visuals/05-normal-ranges.png)
+
+*The ranges are centered on the mean and nested inside one another. Each percentage is the full area within that range, not the area of only its outer band.*
 
 ### Standardizing: the z-score
 
@@ -1116,6 +1164,10 @@ For independent data points, the log turns the product into a sum (Algebra §5, 
 $$
 \ln\left(\prod_i P(x_i \mid \theta)\right) = \sum_i \ln P(x_i \mid \theta)
 $$
+
+![For the worked example's seven heads and three tails, both curves peak at p = 0.7. Taking the log changes the vertical scale but keeps the maximizing parameter value.](assets/visuals/05-likelihood.png)
+
+*For the worked example's seven heads and three tails, both curves peak at p = 0.7. Taking the log changes the vertical scale but keeps the maximizing parameter value.*
 
 ### Solving the coin exactly with calculus
 

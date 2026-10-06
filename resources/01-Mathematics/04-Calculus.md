@@ -87,6 +87,10 @@ On a graph of $d(t)$, the slope between two points is the slope of a straight li
 
 **The instant rate of change = the slope of the tangent line.**
 
+![As the second point approaches t = 2, the secant through both points approaches the tangent at that instant. The interval's average rate approaches the instantaneous rate.](assets/visuals/04-secant.png)
+
+*As the second point approaches t = 2, the secant through both points approaches the tangent at that instant. The interval's average rate approaches the instantaneous rate.*
+
 ### Exercises
 
 **1.1.** For $d(t) = t^2$, find the average speed from $t = 3$ to $t = 4$, and from $t = 3$ to $t = 3.01$. What do you think the speed at exactly $t = 3$ is?
@@ -144,6 +148,10 @@ You can't plug in $h = 0$: you'd get $\frac{0}{0}$. Two ways to find where it's 
 | $\to 4$ as $h \to 0$ | Now plugging in $h = 0$ is fine |
 
 **The key point:** the limit only cares about what happens **near** the value, never **at** it.
+
+![The original expression is undefined at h = 0, shown by the open circle. From either side, its nearby values approach 4.](assets/visuals/04-limit.png)
+
+*The original expression is undefined at h = 0, shown by the open circle. From either side, its nearby values approach 4.*
 
 ### Limits toward infinity
 
@@ -251,6 +259,10 @@ $$
 | large (positive or negative) | changing steeply |
 
 For $x^2$: negative slope left of 0 (going down), zero at 0 (the bottom), positive to the right (going up). That's the U shape.
+
+![Read the two graphs at the same x: negative slope means the function decreases, zero slope means it is locally flat, and positive slope means it increases.](assets/visuals/04-derivative.png)
+
+*Read the two graphs at the same x: negative slope means the function decreases, zero slope means it is locally flat, and positive slope means it increases.*
 
 ### The derivative as sensitivity
 
@@ -507,6 +519,10 @@ In words: **the derivative of the outside function (evaluated at the inside), ti
 
 **Why it works:** for small changes, $\frac{\Delta y}{\Delta x} = \frac{\Delta y}{\Delta u} \cdot \frac{\Delta u}{\Delta x}$. That's true for ordinary fractions, because the $\Delta u$ cancels. Shrink the changes to zero and you get the rule.
 
+![The first function changes u when x changes; the second changes y when u changes. Multiply those local rates to obtain y's sensitivity to x. This previews worked example 1, not an exercise.](assets/visuals/04-chain.png)
+
+*The first function changes u when x changes; the second changes y when u changes. Multiply those local rates to obtain y's sensitivity to x. This previews worked example 1, not an exercise.*
+
 ### The recipe
 
 1. **Name the inside** with a new letter, $u$.
@@ -682,6 +698,10 @@ $$
 
 **How to compute it: treat every other input as a constant number, then differentiate normally.**
 
+![For f(x, y) = x² + y², a partial derivative follows one slice while the other input stays fixed. Both highlighted points correspond to the same location (1, 2).](assets/visuals/04-partial.png)
+
+*For f(x, y) = x² + y², a partial derivative follows one slice while the other input stays fixed. Both highlighted points correspond to the same location (1, 2).*
+
 ### Worked example
 
 $f(x, y) = x^2 + 3xy + y^2$
@@ -767,6 +787,10 @@ $$
 3. **Level ground:** at the very top of a hill or bottom of a valley, $\nabla f = \mathbf{0}$.
 
 **Check fact 1 with the bowl:** at $(1, 2)$, $\nabla f = [2, 4]$ points **away from the origin**, which is exactly the uphill direction of a bowl centered at the origin ✓
+
+![Each contour joins points of equal height; its number is the function value. At (1, 2), the gradient points outward across the contour, and its negative points toward the bottom. Arrow lengths here are shortened for readability.](assets/visuals/04-gradient.png)
+
+*Each contour joins points of equal height; its number is the function value. At (1, 2), the gradient points outward across the contour, and its negative points toward the bottom. Arrow lengths here are shortened for readability.*
 
 ### Why the gradient points the steepest way
 
@@ -881,6 +905,10 @@ $$
 J = \begin{bmatrix}y & x\\1 & 2y\end{bmatrix}, \qquad \text{at } (1, 2):\ J = \begin{bmatrix}2 & 1\\1 & 4\end{bmatrix}
 $$
 
+![Read down one column to see how one input affects every output. Read across one row to see all the sensitivities of one output. The numbers come from the worked example.](assets/visuals/04-jacobian.png)
+
+*Read down one column to see how one input affects every output. Read across one row to see all the sensitivities of one output. The numbers come from the worked example.*
+
 ### The Jacobian of a matrix transformation is the matrix itself
 
 Take $\mathbf{f}(\mathbf{x}) = A\mathbf{x}$ with $A = \begin{bmatrix}2 & 3\\1 & 4\end{bmatrix}$. Multiplied out: $\mathbf{f}(x, y) = [\,2x + 3y,\ \ x + 4y\,]$.
@@ -957,6 +985,10 @@ Read $f''(x)$ aloud as "**f double prime of x**."
 | zero | no bend, at that point | |
 
 For $x^2$: $f'' = 2 > 0$ everywhere, so it's a U everywhere ✓
+
+![The first two curves have a minimum and maximum respectively. The third keeps increasing through its flat point: slope zero alone does not establish a minimum or maximum.](assets/visuals/04-curvature.png)
+
+*The first two curves have a minimum and maximum respectively. The third keeps increasing through its flat point: slope zero alone does not establish a minimum or maximum.*
 
 ### Several inputs: saddles — *Good to know*
 
@@ -1143,6 +1175,10 @@ The update is $w := w - \alpha \cdot 2w = (1 - 2\alpha)\,w$.
 
 For this function, it works when $|1 - 2\alpha| < 1$, which means $0 < \alpha < 1$ (Algebra §2's inequality rules).
 
+![These are the worked example's updates for f(w) = w², starting at w = 3. Crossing the bottom is not always a failure: the middle sequence still settles, while the right sequence grows farther away.](assets/visuals/04-descent.png)
+
+*These are the worked example's updates for f(w) = w², starting at w = 3. Crossing the bottom is not always a failure: the middle sequence still settles, while the right sequence grows farther away.*
+
 ### Worked example: two inputs
 
 $f(x, y) = x^2 + 2y^2$ (a bowl that's steeper in the $y$ direction). $\nabla f = [2x, 4y]$. Start at $(2, 1)$ with $\alpha = 0.1$.
@@ -1154,6 +1190,10 @@ $f(x, y) = x^2 + 2y^2$ (a bowl that's steeper in the $y$ direction). $\nabla f =
 | 3 | $(1.28, 0.36)$ | $[2.56, 1.44]$ | $[0.256, 0.144]$ | $(1.024, 0.216)$ |
 
 Heading toward the bottom at $(0, 0)$ ✓. Notice $y$ shrinks faster than $x$, because the bowl is steeper in $y$.
+
+![The path follows the worked example's step size 0.1 from (2, 1). Contours show equal values of x² + 2y²; update 0 is the starting point.](assets/visuals/04-descent-bowl.png)
+
+*The path follows the worked example's step size 0.1 from (2, 1). Contours show equal values of x² + 2y²; update 0 is the starting point.*
 
 ### The steepest direction limits the step size
 

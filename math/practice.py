@@ -15,4 +15,4 @@ is_true = np.allclose(left, right)
 if is_true:
     print("galing mo tanginamo")
 else:
-    print("ulet pa boi")
+    print("ulet pa boi") 

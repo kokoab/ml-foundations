@@ -160,6 +160,10 @@ Both vectors must have the **same dimension**. You can't add $[1, 2]$ and $[1, 2
 
 The order doesn't matter: $[1, 2] + [3, 1]$ gets you to the same place.
 
+![Follow the blue arrow, then the orange arrow. The green arrow reaches the same endpoint in one move; this is the worked example above.](assets/visuals/03-addition.png)
+
+*Follow the blue arrow, then the orange arrow. The green arrow reaches the same endpoint in one move; this is the worked example above.*
+
 ### Multiplying a vector by a number
 
 Multiply **every component** by the number:
@@ -178,6 +182,10 @@ A single number used this way is called a **scalar** (because it "scales" the ve
 | between 0 and 1 | shrinks it, same direction | $0.5 \cdot [2, 1] = [1, 0.5]$ |
 | 0 | shrinks it to nothing | $0 \cdot [2, 1] = [0, 0]$ |
 | negative | **flips** it to point the opposite way | $-1 \cdot [2, 1] = [-2, -1]$ |
+
+![Gray is the original arrow. Scaling changes every component together: a positive factor keeps its direction, and a negative factor reverses it.](assets/visuals/03-scaling.png)
+
+*Gray is the original arrow. Scaling changes every component together: a positive factor keeps its direction, and a negative factor reverses it.*
 
 ### Subtracting vectors
 
@@ -238,6 +246,10 @@ The arrow $[3, 4]$ goes 3 right and 4 up. Those two moves make the two short sid
 $$
 \text{length} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
 $$
+
+![The horizontal and vertical moves form a right triangle. The arrow's length is the square root of 3² + 4², rather than the total distance along the two sides.](assets/visuals/03-length.png)
+
+*The horizontal and vertical moves form a right triangle. The arrow's length is the square root of 3² + 4², rather than the total distance along the two sides.*
 
 ### Length in any dimension
 
@@ -387,6 +399,10 @@ So:
 - $\cos\theta$ = **how far right** (negative means left) you are after turning $\theta$
 - $\sin\theta$ = **how far up** (negative means down) you are after turning $\theta$
 
+![Demonstration at 35°: the radius has length 1. Dropping straight down from its tip separates the horizontal cosine component from the vertical sine component.](assets/visuals/03-angle.png)
+
+*Demonstration at 35°: the radius has length 1. Dropping straight down from its tip separates the horizontal cosine component from the vertical sine component.*
+
 ### The values to know
 
 Read them straight off the circle:
@@ -518,6 +534,10 @@ Vectors with dot product zero are called **orthogonal** (the formal word for per
 
 **Example.** $[3, 4] \cdot [4, -3] = 12 - 12 = 0$. They're perpendicular.
 
+![The sign of the dot product reflects the angle between the arrows. Their lengths also affect its size.](assets/visuals/03-dot-sign.png)
+
+*The sign of the dot product reflects the angle between the arrows. Their lengths also affect its size.*
+
 ### A vector dotted with itself
 
 $$
@@ -611,6 +631,10 @@ This is called **cosine similarity**. It's always between $-1$ and $1$ (§4):
 | $\cos\theta$ | $\frac{32}{3.742 \times 8.775} \approx \frac{32}{32.833} \approx 0.975$ |
 
 Very close to 1, so these point in almost the same direction.
+
+![Separate demonstration: changing the orange arrow's length changes its dot product with the blue arrow, but the 30° angle and cosine similarity stay the same.](assets/visuals/03-cosine.png)
+
+*Separate demonstration: changing the orange arrow's length changes its dot product with the blue arrow, but the 30° angle and cosine similarity stay the same.*
 
 ### Dot product vs. cosine similarity: they can disagree
 
@@ -713,6 +737,10 @@ Project $\mathbf{b} = [3, 4]$ onto $\mathbf{a} = [1, 1]$.
 
 > **Why ML cares:** Fitting a straight line through scattered data points is, underneath, a projection problem: finding the closest point you can reach. You'll see this concretely in §17.
 
+![In the worked example, the green arrow is the projection of b onto the diagonal line. The dashed orange leftover meets that line at a right angle.](assets/visuals/03-projection.png)
+
+*In the worked example, the green arrow is the projection of b onto the diagonal line. The dashed orange leftover meets that line at a right angle.*
+
 ### Exercises
 
 **7.1.** Project $[2, 3]$ onto $[1, 0]$. Draw it. Why is the answer obvious?
@@ -779,6 +807,10 @@ Vectors are **linearly dependent** if **at least one is a combination of the oth
 | $[1, 0]$, $[0, 1]$, $[3, 5]$ | No | $[3, 5] = 3[1, 0] + 5[0, 1]$ | the plane |
 
 **A useful fact:** in $\mathbb{R}^2$ you can never have more than 2 independent vectors. The plane only has 2 "genuinely different" directions. In $\mathbb{R}^n$, you can have at most $n$.
+
+![Multiples and sums of two independent directions can reach any point in the plane. If both directions lie on the same line, every combination stays on that line.](assets/visuals/03-span.png)
+
+*Multiples and sums of two independent directions can reach any point in the plane. If both directions lie on the same line, every combination stays on that line.*
 
 ### Checking whether a point is in a span
 
@@ -989,6 +1021,10 @@ $$
 
 In the shop example: $2 \times 3$ matrix times 3 entries gives 2 entries (one total per shop).
 
+![The vector's entry count must match the matrix's column count. Each row uses the full vector to produce one output, so the output count matches the number of rows.](assets/visuals/03-matrix-vector.png)
+
+*The vector's entry count must match the matrix's column count. Each row uses the full vector to produce one output, so the output count matches the number of rows.*
+
 ### The identity matrix does nothing
 
 $$
@@ -1096,6 +1132,10 @@ Why these columns:
 - **Column 2:** $[0, 1]$ is $[1, 0]$ already turned by $90°$. Turning any vector $[p, q]$ by $90°$ gives $[-q, p]$ (check: $[1, 0] \to [0, 1] \to [-1, 0]$). So $[0, 1]$ lands at $[\cos\theta, \sin\theta]$ turned $90°$, which is $[-\sin\theta, \cos\theta]$.
 
 For $90°$: $R_{90°} = \begin{bmatrix}0 & -1\\1 & 0\end{bmatrix}$. Example: $[2, 1] \mapsto 2[0, 1] + 1[-1, 0] = [-1, 2]$.
+
+![The dashed square is the input; the shaded shape is its image. Blue and orange arrows show where the two basis directions land. These are transformations from the catalog above.](assets/visuals/03-transformations.png)
+
+*The dashed square is the input; the shaded shape is its image. Blue and orange arrows show where the two basis directions land. These are transformations from the catalog above.*
 
 ### What matrix transformations always do
 
@@ -1288,6 +1328,10 @@ $$
 - Shape $m \times n$ becomes $n \times m$.
 - Entry rule: $(A^\top)_{ij} = A_{ji}$.
 
+![The highlighted first row becomes the highlighted first column. Transposing swaps row and column positions while keeping the values.](assets/visuals/03-transpose.png)
+
+*The highlighted first row becomes the highlighted first column. Transposing swaps row and column positions while keeping the values.*
+
 ### Rows vs. columns finally matters
 
 Now we can say precisely: a **column vector** is an $n \times 1$ matrix, and a **row vector** is a $1 \times n$ matrix. Transpose turns one into the other.
@@ -1391,6 +1435,10 @@ Read $\det(A)$ aloud as "**the determinant of A**." (Sometimes written $|A|$, wh
 **A zero determinant is the most important case.** It connects to independence: a zero determinant means the columns are **dependent** (they point along the same line), so they can only reach a line, not the whole plane.
 
 **Example.** $\det\begin{bmatrix}2 & 1\\4 & 2\end{bmatrix} = 4 - 4 = 0$. Look at the columns: $[2, 4]$ and $[1, 2]$. The first is twice the second, so they're dependent ✓
+
+![The absolute determinant gives the area multiplier. A negative sign records an orientation flip; zero means a square has collapsed into a line or point.](assets/visuals/03-determinant.png)
+
+*The absolute determinant gives the area multiplier. A negative sign records an orientation flip; zero means a square has collapsed into a line or point.*
 
 ### Bigger matrices
 
@@ -1560,6 +1608,10 @@ That's the span question from §8.
 | **Infinitely many** | columns dependent, and $\mathbf{b}$ happens to be in their span | the two equations are the same line |
 
 When there's exactly one solution, it's $\mathbf{x} = A^{-1}\mathbf{b}$ (§15).
+
+![Separate demonstrations: a solution must lie on both lines. Crossing lines give one point, parallel distinct lines give none, and coincident lines share all their points.](assets/visuals/03-systems.png)
+
+*Separate demonstrations: a solution must lie on both lines. Crossing lines give one point, parallel distinct lines give none, and coincident lines share all their points.*
 
 ### Rank
 
@@ -1737,6 +1789,10 @@ For our matrix: $[1, 1]$ has eigenvalue $3$, and $[1, -1]$ has eigenvalue $1$.
 
 **Any multiple of an eigenvector is also an eigenvector** with the same eigenvalue, since it's the same line. $[2, 2]$ works just as well as $[1, 1]$.
 
+![For the matrix in this section, [1, 1] becomes three times longer on the same line. By comparison, [1, 0] turns when the matrix is applied.](assets/visuals/03-eigenvectors.png)
+
+*For the matrix in this section, [1, 1] becomes three times longer on the same line. By comparison, [1, 0] turns when the matrix is applied.*
+
 ### How to find them
 
 We need $A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v}$ not zero.
@@ -1851,6 +1907,10 @@ This is called the **Singular Value Decomposition**, or **SVD**.
 **In words: every matrix transformation is rotate → stretch → rotate.** No matter how complicated a matrix looks, that's all it does.
 
 The singular values say **how much stretching** happens in each direction, biggest first.
+
+![A two-dimensional demonstration of SVD: apply V transpose, then the axis stretches, then U. The colored arrows track the same two input directions. Orthogonal factors can also include reflections.](assets/visuals/03-svd.png)
+
+*A two-dimensional demonstration of SVD: apply V transpose, then the axis stretches, then U. The colored arrows track the same two input directions. Orthogonal factors can also include reflections.*
 
 ### Building a matrix from simple pieces
 

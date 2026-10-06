@@ -58,6 +58,10 @@ You want to know the average height of all adults in the Philippines. You can't 
 
 **The core idea:** a statistic is an **estimate** of a parameter. A different random sample of 500 would give a slightly different estimate. Statistics is about understanding that wobble.
 
+![The dots illustrate the full group and a smaller group selected for measurement. A statistic is calculated from the sample; the population parameter is what you want to learn about.](assets/visuals/06-sampling.png)
+
+*The dots illustrate the full group and a smaller group selected for measurement. A statistic is calculated from the sample; the population parameter is what you want to learn about.*
+
 ### Notation: Greek for population, Latin for sample
 
 | | Population (true, unknown) | Sample (calculated) |
@@ -103,6 +107,10 @@ You have a list of numbers. What's the **typical** value? There are three common
 The mean says "typical income is ₱100k," but 4 out of 5 people earn ₱30k or less. **One extreme value (an outlier) dragged the mean way up.** The median didn't move.
 
 **Rule of thumb:** for data with extreme values (incomes, house prices, contract amounts), the median usually describes "typical" better.
+
+![The five incomes are the worked example's [20, 25, 25, 30, 400]. The mean rises to 100, while the median and mode remain 25.](assets/visuals/06-center.png)
+
+*The five incomes are the worked example's [20, 25, 25, 30, 400]. The mean rises to 100, while the median and mode remain 25.*
 
 ### A deeper connection: which "center" is closest?
 
@@ -165,6 +173,10 @@ s^2 = \frac{1}{n - 1}\sum_{i=1}^n (x_i - \bar{x})^2
 $$
 
 **We divide by $n - 1$ instead of $n$.** And $s = \sqrt{s^2}$ is the sample standard deviation.
+
+![Separate demonstrations: both samples average to 5, but their distances from 5 differ. Variance summarizes squared distances, while standard deviation returns to the original units.](assets/visuals/06-spread.png)
+
+*Separate demonstrations: both samples average to 5, but their distances from 5 differ. Variance summarizes squared distances, while standard deviation returns to the original units.*
 
 ### Why $n - 1$?
 
@@ -266,6 +278,10 @@ Now draw a vertical line at $\bar{x}$ and a horizontal line at $\bar{y}$. That s
 | lower right | + | − | **−** |
 
 If most points are upper right or lower left (both above average together, or both below average together), the products are **mostly positive**.
+
+![Separate demonstrations: correlation measures a straight-line tendency. The right plot has a clear U-shaped relationship, yet its symmetric x and x² values have zero correlation.](assets/visuals/06-correlation.png)
+
+*Separate demonstrations: correlation measures a straight-line tendency. The right plot has a clear U-shaped relationship, yet its symmetric x and x² values have zero correlation.*
 
 ### Covariance
 
@@ -395,6 +411,10 @@ This is the **standard error**: the standard deviation of an estimate. It measur
 
 **To cut uncertainty in half, you need 4 times as much data.**
 
+![For independent samples from a normal population with mean 0 and standard deviation 1, the sample mean's standard error is 1 divided by the square root of the sample size. Quadrupling the sample size halves that spread.](assets/visuals/06-standard-error.png)
+
+*For independent samples from a normal population with mean 0 and standard deviation 1, the sample mean's standard error is 1 divided by the square root of the sample size. Quadrupling the sample size halves that spread.*
+
 ### Standard error of a percentage
 
 A yes/no answer is a Bernoulli variable (Probability §10) with variance $p(1 - p)$. The percentage of "yes" is an average of those 0s and 1s, so:
@@ -475,6 +495,10 @@ Imagine repeating the whole survey many times, making a new interval each time. 
 
 It does **not** quite mean "there's a 95% chance the truth is in *this* interval." The truth is a fixed number, and it's either in there or not. The 95% describes how reliable the **method** is. It's a subtle distinction, but it avoids some wrong conclusions.
 
+![Simulation of 40 independent normal-mean estimates with known standard error 1. Each interval extends 1.96 standard errors either way. Orange intervals miss the fixed true mean; a finite run need not contain exactly 95% successful intervals.](assets/visuals/06-intervals.png)
+
+*Simulation of 40 independent normal-mean estimates with known standard error 1. Each interval extends 1.96 standard errors either way. Orange intervals miss the fixed true mean; a finite run need not contain exactly 95% successful intervals.*
+
 ### The bootstrap: intervals without a formula
 
 The $\pm 1.96 \times \text{SE}$ formula needs a formula for SE. For many quantities (a median, or complicated scores), there isn't a simple one. The **bootstrap** gets around this with computing power:
@@ -485,6 +509,10 @@ The $\pm 1.96 \times \text{SE}$ formula needs a formula for SE. For many quantit
 4. Sort all the results. The middle 95% (from the 2.5th to the 97.5th percentile) is your interval.
 
 **Why it works:** your sample is your best picture of the population. Resampling from it imitates "what if I had collected a different sample?"
+
+![Separate demonstration: a resample has the same size as the original sample, but 6 appears twice and 8 is absent. Compute the statistic on every resample to approximate its sampling variability.](assets/visuals/06-bootstrap.png)
+
+*Separate demonstration: a resample has the same size as the original sample, but 6 appears twice and 8 is absent. Compute the statistic on every resample to approximate its sampling variability.*
 
 ### Exercises
 
@@ -532,6 +560,10 @@ The **p-value** is: **assuming $H_0$ is true, the probability of seeing a result
 | More precisely, the p-value is | about 0.046 |
 
 So if the coin were fair, a result this lopsided would happen only about 4.6% of the time.
+
+![Separate demonstration with a standard-normal null distribution: the p-value is the combined shaded area beyond −2.2 and +2.2. It is a probability about possible data under the null, not the probability that the null is true.](assets/visuals/06-pvalue.png)
+
+*Separate demonstration with a standard-normal null distribution: the p-value is the combined shaded area beyond −2.2 and +2.2. It is a probability about possible data under the null, not the probability that the null is true.*
 
 ### Deciding
 
@@ -655,6 +687,10 @@ This is exactly the line from Linear Algebra §17, found with a completely diffe
 
 The residuals add up to 0. (That always happens with an intercept: it's exactly Step 1's equation.)
 
+![The worked example's data are [1, 2, 3] and [2, 4, 7]. Green segments are vertical residuals between observations and fitted predictions; least squares minimizes the sum of their squares.](assets/visuals/06-least-squares.png)
+
+*The worked example's data are [1, 2, 3] and [2, 4, 7]. Green segments are vertical residuals between observations and fitted predictions; least squares minimizes the sum of their squares.*
+
 ### How good is the fit? $R^2$
 
 Compare the leftover squared error with the total spread of $y$:
@@ -713,6 +749,10 @@ Imagine throwing many darts at the bullseye (the true value):
 |---|---|---|
 | **Low bias** (centered on bullseye) | ideal | right on average, but any single throw is unreliable |
 | **High bias** (centered off to the side) | consistently wrong | wrong and scattered |
+
+![Schematic dartboards: the orange cross marks the truth, and each blue dot is an estimate from a different sample. Bias shifts the cluster's center; variance changes its spread.](assets/visuals/06-bias-variance.png)
+
+*Schematic dartboards: the orange cross marks the truth, and each blue dot is an estimate from a different sample. Bias shifts the cluster's center; variance changes its spread.*
 
 ### Definitions
 

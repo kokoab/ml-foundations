@@ -101,6 +101,10 @@ $$
 
 Every model in this curriculum, from a straight line up to a large neural network, fits this recipe.
 
+![Features enter the model, its prediction is compared with the known target, and the loss guides weight updates. After training, the learned model predicts on new features.](assets/visuals/07-training.png)
+
+*Features enter the model, its prediction is compared with the known target, and the loss guides weight updates. After training, the learned model predicts on new features.*
+
 ### Exercises
 
 **1.1.** A dataset has 2,000 emails, each described by 50 numbers, labeled spam or not spam. What are $n$ and $d$? What's the shape of $X$? Is this regression or classification?
@@ -171,6 +175,10 @@ From Statistics §2: minimizing squared distance gives the **mean**, which gets 
 - Messy data with extreme values: **MAE** is more robust.
 
 §4 gives a deeper reason for MSE. For classification, we'll need a different loss entirely (§5).
+
+![Both losses are zero at a correct prediction. For errors larger than 1 in these units, squared error rises more quickly and gives large errors more influence.](assets/visuals/07-loss.png)
+
+*Both losses are zero at a correct prediction. For errors larger than 1 in these units, squared error rises more quickly and gives large errors more influence.*
 
 ### Exercises
 
@@ -293,6 +301,10 @@ $$
 
 One step cut the cost from 23 to 0.63. Many more steps converge to $[-0.667, 2.5]$.
 
+![The worked example starts with bias and slope both zero. A single step of size 0.1 tilts and raises the line; the green error segments shrink substantially. This shows the first step only.](assets/visuals/07-regression-step.png)
+
+*The worked example starts with bias and slope both zero. A single step of size 0.1 tilts and raises the line; the green error segments shrink substantially. This shows the first step only.*
+
 ### Exercises
 
 **3.1.** Derive $\frac{\partial J}{\partial w}$ and $\frac{\partial J}{\partial b}$ for one feature, without looking.
@@ -373,6 +385,10 @@ $$
 
 So choosing MSE is secretly a **belief** about your data: errors are bell-shaped, and extreme errors are extremely rare. If your data has wild outliers, that belief is wrong, and MAE (which corresponds to a noise distribution with heavier tails) may be the better choice.
 
+![With fixed noise standard deviation 1, negative log-density equals half the squared error plus a constant. Making Gaussian errors more likely therefore favors the same predictions as minimizing squared error.](assets/visuals/07-gaussian-loss.png)
+
+*With fixed noise standard deviation 1, negative log-density equals half the squared error plus a constant. Making Gaussian errors more likely therefore favors the same predictions as minimizing squared error.*
+
 ### Exercises
 
 **4.1.** Reproduce the derivation without looking.
@@ -452,6 +468,10 @@ Only one of the two terms is ever "on":
 | 0 | $-\ln(1 - p)$ | 2.303 | 0.693 | 0.105 | 0.010 |
 
 **Confident and right** costs almost nothing. **Confident and wrong** costs a lot, and the cost grows without limit as $p$ approaches the wrong extreme.
+
+![The sigmoid maps the linear score into [0, 1]. Binary cross-entropy gets large when the model assigns very little probability to the true class.](assets/visuals/07-logistic.png)
+
+*The sigmoid maps the linear score into [0, 1]. Binary cross-entropy gets large when the model assigns very little probability to the true class.*
 
 ### Deriving the gradient
 
@@ -546,6 +566,10 @@ $$
 \mathbf{z} = [z_1, \ldots, z_K], \qquad s_k = \text{softmax}(\mathbf{z})_k = \frac{e^{z_k}}{\sum_j e^{z_j}}
 $$
 
+![For demonstration scores [1.5, 0.2, −0.7], softmax preserves which class ranks highest while turning all scores into positive probabilities. Displayed probabilities are rounded.](assets/visuals/07-softmax.png)
+
+*For demonstration scores [1.5, 0.2, −0.7], softmax preserves which class ranks highest while turning all scores into positive probabilities. Displayed probabilities are rounded.*
+
 ### One-hot targets
 
 Write the true class as a vector with a 1 in the correct position and 0s elsewhere. This is called **one-hot** encoding. If the true class is 2 out of 3: $\mathbf{y} = [0, 1, 0]$.
@@ -625,6 +649,10 @@ The tell-tale sign of overfitting: **very low error on training data, much highe
 
 One common symptom: the weights become **very large**, because big weights are what allow sharp wiggles.
 
+![Synthetic demonstration: the flexible curve exactly interpolates ten noisy training points, but invents swings between them. The simple fit misses some points while staying closer to the underlying trend.](assets/visuals/07-overfitting.png)
+
+*Synthetic demonstration: the flexible curve exactly interpolates ten noisy training points, but invents swings between them. The simple fit misses some points while staying closer to the underlying trend.*
+
 ### The idea: make large weights cost something
 
 Add a **penalty** for large weights to the cost:
@@ -673,6 +701,10 @@ $$
 $$
 
 The slope of $|w|$ is $+1$ for positive $w$ and $-1$ for negative $w$ (the V shape, Functions §8). So each step moves every weight **toward zero by a fixed amount** $\alpha\lambda$.
+
+![A one-weight comparison: L2 has a smooth bowl with a slope that grows with the weight's magnitude. L1 has a corner at zero and a constant slope magnitude away from zero.](assets/visuals/07-penalties.png)
+
+*A one-weight comparison: L2 has a smooth bowl with a slope that grows with the weight's magnitude. L1 has a corner at zero and a constant slope magnitude away from zero.*
 
 ### L2 vs. L1 with numbers
 
@@ -780,6 +812,10 @@ Example: 63 input features, 128 hidden neurons, 10 classes.
 ### Training: we need every gradient
 
 To use gradient descent, we need $\frac{\partial \ell}{\partial W_1}$, $\frac{\partial \ell}{\partial \mathbf{b}_1}$, $\frac{\partial \ell}{\partial W_2}$, and $\frac{\partial \ell}{\partial \mathbf{b}_2}$. The network is a chain of functions, so we use the **forward-then-backward** method from Calculus §5. For neural networks, this is called **backpropagation**.
+
+![Each layer combines inputs with a matrix and bias, then applies an activation to each value. Backpropagation sends sensitivities backward through these operations using the chain rule.](assets/visuals/07-network.png)
+
+*Each layer combines inputs with a matrix and bias, then applies an activation to each value. Backpropagation sends sensitivities backward through these operations using the chain rule.*
 
 ### Backpropagation on a tiny network, with real numbers
 
